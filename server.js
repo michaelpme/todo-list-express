@@ -1,18 +1,18 @@
-const express = require('express')
-const app = express()
-const MongoClient = require('mongodb').MongoClient
-const PORT = 2121
-require('dotenv').config()
+const express = require('express') // allows us to use the Express's methods/mmodules
+const app = express() //assigns express to the app variable
+const MongoClient = require('mongodb').MongoClient // imports/allows us to use mongodb's methods/modules
+const PORT = 2121 //assigns a port number to a variable to be used later in the listen express method
+require('dotenv').config()  // guess - allows us to use the .env file to store our environment variables like mongodb connection string
 
 
-let db,
-    dbConnectionStr = process.env.DB_STRING,
-    dbName = 'todo'
+let db, //declared db outside the the mongodb method so it can be accessed anywhere in the app
+    dbConnectionStr = process.env.DB_STRING,  // assigning a db_string(mongodb connection string(password)) which resides in our .env file to a variable. This allows us to keep that senstive data locally/ or in the environment that will host the app. no need to upload to github
+    dbName = 'todo'  // assigning our mongodb name to variable
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
-    .then(client => {
-        console.log(`Connected to ${dbName} Database`)
-        db = client.db(dbName)
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true }) // creating a connection to our mongdb database returns a promise. 
+    .then(client => { 
+        console.log(`Connected to ${dbName} Database`) // console logging our dbname
+        db = client.db(dbName) // 
     })
     
 app.set('view engine', 'ejs')
