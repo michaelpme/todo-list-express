@@ -1,7 +1,7 @@
 h1{
-    color: red;
+    color: red; /* sets the font of all h1 to red*/
 }
-.completed{
-    color: gray;
-    text-decoration: line-through;
+.completed{ /*targets the elements that have the completed class*/
+    color: gray;/*sets the text color to grey*/
+    text-decoration: line-through;/*puts a line through the text*/
 }
